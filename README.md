@@ -1,6 +1,6 @@
 # Question_Answering_Using_Langchain
+![Capture_3](https://github.com/Khaled110/Question_Answering_App_Using_Langchain/assets/49573699/0cc2906b-7d5e-4797-ad7c-3ad4baed54ad)
 
-![Capture_3](https://github.com/Khaled110/Question_Answering_Using_Langchain/assets/49573699/fe37c7fe-554b-4bf1-95d9-58b2788b0344)
 
 ## Introduction
 The goal of this project is to develop a semantic search system for articles using Natural Language 
@@ -20,10 +20,10 @@ keywords extractions techniques.
 - Streamlit
 
 ## Streamlit App Screenshot
-![Capture_2](https://github.com/Khaled110/Question_Answering_Using_Langchain/assets/49573699/c3bd710d-5ce2-4cea-85fd-f08a3b955c1d)
+![Capture_2](https://github.com/Khaled110/Question_Answering_App_Using_Langchain/assets/49573699/02efac59-138e-4c5e-bebd-92bba28146ee)
 
 ## Demo App
-* You can check the streamlit app [here]()
+* You can check the streamlit app [here](https://questionansweringappusinglangchain.streamlit.app)
 
 
 
