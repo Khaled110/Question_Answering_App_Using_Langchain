@@ -1,8 +1,6 @@
 import streamlit as st
 #from langchain.llms import OpenAI
 from langchain import PromptTemplate, LLMChain, HuggingFaceHub
-import os
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
 st.title('🦜🔗 Quickstart App')
 
@@ -15,7 +13,7 @@ def generate_response(question):
         input_variables=['question']
     )
     repo_id = "bigscience/bloom"  
-    llm=HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature":1e-10})
+    llm=HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature":1e-10}, huggingfacehub_api_token = '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')
     llm_chain = LLMChain(llm=llm, prompt=prompt)
     answer = llm_chain.run(question).split('\n')[0]
     st.info(answer)
