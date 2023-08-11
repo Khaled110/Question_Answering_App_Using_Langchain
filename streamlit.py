@@ -7,25 +7,26 @@ os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 st.title('🦜🔗 Quickstart App')
 
 def generate_response(question):
-  repo_id = "bigscience/bloom"  
-  llm=HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature":1e-10})
-  llm_chain = LLMChain(llm=llm, prompt=prompt)
-  answer = llm_chain.run(question).split('\n')[0]
-  st.info(answer)
+    template = """Question: {question}
 
-template = """Question: {question}
+    Answer:"""
+    prompt = PromptTemplate(
+            template=template,
+        input_variables=['question']
+    )
+    repo_id = "bigscience/bloom"  
+    llm=HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature":1e-10})
+    llm_chain = LLMChain(llm=llm, prompt=prompt)
+    answer = llm_chain.run(question).split('\n')[0]
+    st.info(answer)
 
-Answer:"""
-prompt = PromptTemplate(
-        template=template,
-    input_variables=['question']
-)
+
 
 with st.form('my_form'):
-  text = st.text_area('Enter your question:', 'who was founded Facebook?')
-  submitted = st.form_submit_button('Submit')
-  if submitted:
-    generate_response(text)
+    text = st.text_area('Enter your question:', 'who was founded Facebook?')
+    submitted = st.form_submit_button('Submit')
+    if submitted:
+        generate_response(text)
 
 
 """
