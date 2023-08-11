@@ -1,8 +1,8 @@
 import streamlit as st
-#from langchain.llms import OpenAI
+from langchain.llms import OpenAI
 from langchain import PromptTemplate, LLMChain, HuggingFaceHub
 
-st.title('🦜🔗 Quickstart App')
+st.title('🦜🔗 QA Using Langchain App')
 
 def generate_response(question):
     template = """Question: {question}
@@ -18,7 +18,10 @@ def generate_response(question):
     answer = llm_chain.run(question).split('\n')[0]
     st.info(answer)
 
-
+def generate_o_response(text):
+    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+    st.info(llm(text))
+    
 
 with st.form('my_form'):
     text = st.text_area('Enter your question:', 'who was founded Facebook?')
@@ -27,9 +30,7 @@ with st.form('my_form'):
         generate_response(text)
 
 
-"""
-openai_api_key = st.sidebar.text_input('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')
-
+openai_api_key = st.sidebar.text_input('Your OpenAI API Key')
 
 
 def generate_response(input_text):
@@ -37,12 +38,9 @@ def generate_response(input_text):
   st.info(llm(input_text))
 
 with st.form('my_form'):
-  text = st.text_area('Enter text:', 'What are the three key pieces of advice for learning how to code?')
-  submitted = st.form_submit_button('Submit')
-  if not openai_api_key.startswith('sk-'):
-    st.warning('Please enter your OpenAI API key!', icon='⚠')
-  if submitted and openai_api_key.startswith('sk-'):
-    generate_response(text)
-
-"""
+    o_submitted = st.form_submit_button('Submit using OpenAI')
+    if not openai_api_key.startswith('sk-'):
+        st.warning('Please enter your OpenAI API key!', icon='⚠')
+    if o_submitted and openai_api_key.startswith('sk-'):
+        generate_o_response(text)
 
